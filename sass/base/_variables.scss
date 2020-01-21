@@ -4,12 +4,18 @@
 $header-font: 'Alata', 'Helvetica Neue', Helvetica, sans-serif;
 $body-font: 'Lato', Arial, sans-serif;
 
+$font-size-mobile-menu: 1.5rem;
+
 /*
  * COLORS 
 */
-$menu-dark: #282c34;
+$menu-darker: #282c34;
+$menu-dark: #3d404e;
 $menu-medium: #858c98;
 $menu-bright: #fff;
+
+$menu-font-color: #b0b0b0;
+$menu-font-hover-color: #fff;
 
 $basic-darkest: #000;
 $basic-dark: #282c34;
@@ -39,4 +45,11 @@ $heading-xl: 1rem; // WIP
  * HEIGHTS
 */
 
-$header-height: 2.8rem;
+$header-height-mobile: 3.5rem;
+
+/*
+ * Z-INDEX
+*/
+
+$z-high: 100; //for header menu ul
+$z-highest: 1000; //for header menu bar

@@ -2,8 +2,8 @@
 
 .site_header {
   display: flex;
-  height: 3.5rem;
-  background-color: $menu-dark;
+  height: $header-height-mobile;
+  background-color: $menu-darker;
   &-navigation {
     display: flex;
     justify-content: flex-end;
@@ -29,8 +29,23 @@
   }
 }
 
+.primary-menu,
+.secondary-menu {
+  padding: 1.5rem 2rem;
+  li {
+    margin-bottom: 1rem;
+  }
+  a {
+    color: $menu-font-color;
+    text-decoration: none;
+    &:hover {
+      color: $menu-font-hover-color;
+    }
+  }
+}
+
 .primary-menu {
-  &-title {
+  &-button {
     display: none;
     @media (min-width: $screen-size-m) {
       display: block;
@@ -40,20 +55,46 @@
       display: block;
       height: 1.8rem;
       position: relative;
-      top: -3px;
       @media (min-width: $screen-size-m) {
         display: none;
       }
     }
   }
+}
 
+.primary-menu,
+.secondary-menu {
   &-container {
-    display: none;
+    top: 6.3rem;
+    position: absolute;
+    background-color: $menu-darker;
+    width: 100vw;
+    right: 0;
+    z-index: $z-high;
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden;
+
+    &.is-opened {
+      max-height: 500px;
+      transition: max-height 0.25s ease-in;
+    }
+  }
+
+  li {
+    font-size: $font-size-mobile-menu;
   }
 }
 
-.secondary-menu {
-  &-container {
-    display: none;
+.primary-menu .menu-item-has-children {
+  .sub-menu {
+    max-height: 0;
+    transition: max-height 0.15s ease-out;
+    overflow: hidden;
+
+    &.is-opened {
+      max-height: 500px;
+      transition: max-height 0.25s ease-in;
+    }
   }
 }

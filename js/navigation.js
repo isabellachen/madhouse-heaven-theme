@@ -5,12 +5,34 @@
  * navigation support for dropdown menus.
  */
 
-(function() {
-  var hamburger = document.querySelector('.hamburger');
+(function($) {
+  /* JS for hamburger */
+  const hamburger = document.querySelector('.hamburger');
+  const secondaryMenu = document.querySelector('.secondary-menu-container');
   hamburger.addEventListener('click', function() {
     hamburger.classList.toggle('is-active');
+    secondaryMenu.classList.toggle('is-opened');
   });
-})();
+
+  /* JS for destinations */
+  const primaryButton = document.querySelector('.primary-menu-button--mobile');
+  const primaryMenu = document.querySelector('.primary-menu-container');
+  primaryButton.addEventListener('click', function() {
+    primaryMenu.classList.toggle('is-opened');
+  });
+
+  const menuItems = $('.menu-item-has-children');
+  for (let i = 0; i < menuItems.length; i++) {
+    const menuItem = menuItems[i];
+    const subItem = $(menuItem).find('.sub-menu');
+    menuItem.addEventListener('mouseenter', function() {
+      subItem.addClass('is-opened');
+    });
+    menuItem.addEventListener('mouseleave', function() {
+      subItem.removeClass('is-opened');
+    });
+  }
+})(jQuery);
 
 /* Navigation code that came with _.s */
 (function() {

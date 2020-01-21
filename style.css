@@ -418,8 +418,8 @@ template {
  * @link https://github.com/jonsuh/hamburgers
  */
 .hamburger {
+  display: flex;
   padding: 15px 15px;
-  display: inline-block;
   cursor: pointer;
   transition-property: opacity, filter;
   transition-duration: 0.15s;
@@ -534,6 +534,9 @@ template {
 /*
  * HEIGHTS
 */
+/*
+ * Z-INDEX
+*/
 h1,
 h2,
 h3 {
@@ -557,6 +560,13 @@ li {
   list-style: none;
 }
 
+button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
 /* Component Styles */
 /*
  * FONTS 
@@ -572,6 +582,9 @@ li {
 */
 /*
  * HEIGHTS
+*/
+/*
+ * Z-INDEX
 */
 .site_header {
   display: flex;
@@ -603,33 +616,80 @@ li {
   max-width: 80%;
 }
 
-.primary-menu-title {
+.primary-menu,
+.secondary-menu {
+  padding: 1.5rem 2rem;
+}
+
+.primary-menu li,
+.secondary-menu li {
+  margin-bottom: 1rem;
+}
+
+.primary-menu a,
+.secondary-menu a {
+  color: #b0b0b0;
+  text-decoration: none;
+}
+
+.primary-menu a:hover,
+.secondary-menu a:hover {
+  color: #fff;
+}
+
+.primary-menu-button {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .primary-menu-title {
+  .primary-menu-button {
     display: block;
   }
 }
 
-.primary-menu-title--mobile {
+.primary-menu-button--mobile {
   display: block;
   height: 1.8rem;
   position: relative;
-  top: -3px;
 }
 
 @media (min-width: 768px) {
-  .primary-menu-title--mobile {
+  .primary-menu-button--mobile {
     display: none;
   }
 }
 
-.primary-menu-container {
-  display: none;
+.primary-menu-container,
+.secondary-menu-container {
+  top: 6.3rem;
+  position: absolute;
+  background-color: #282c34;
+  width: 100vw;
+  right: 0;
+  z-index: 100;
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
 }
 
-.secondary-menu-container {
-  display: none;
+.primary-menu-container.is-opened,
+.secondary-menu-container.is-opened {
+  max-height: 500px;
+  transition: max-height 0.25s ease-in;
+}
+
+.primary-menu li,
+.secondary-menu li {
+  font-size: 1.5rem;
+}
+
+.primary-menu .menu-item-has-children .sub-menu {
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+}
+
+.primary-menu .menu-item-has-children .sub-menu.is-opened {
+  max-height: 500px;
+  transition: max-height 0.25s ease-in;
 }

@@ -35,8 +35,8 @@
 
       <nav id="site-navigation" class="site_header-navigation">
         <div class="primary-menu-wrapper">
-          <div class="primary-menu-title">DESTINATIONS</div>
-          <div class="primary-menu-title--mobile"><img src="<?php echo get_template_directory_uri(); ?>/assets/earth.svg"></div>
+          <button class="primary-menu-button">DESTINATIONS</button>
+          <button class="primary-menu-button--mobile"><img src="<?php echo get_template_directory_uri(); ?>/assets/earth.svg"></button>
           <?php
           wp_nav_menu(array(
             'theme_location' => 'primary',
