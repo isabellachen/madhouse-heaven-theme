@@ -1,0 +1,22 @@
+@import '../base/variables';
+
+h1 {
+  font-family: $header-font;
+}
+
+body {
+  margin: 0;
+  font-family: $body-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
