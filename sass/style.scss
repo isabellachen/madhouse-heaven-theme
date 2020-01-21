@@ -29,9 +29,16 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* Nice to have features that came packaged with underscores */
 @import 'features/infinite-scroll';
 @import 'features/ally';
+@import 'features/hamburgers';
+
+/* Base Styles */
+@import 'base/globals';
+
+/* Component Styles */
+@import 'components/header';
 
 body {
   @media (min-width: 1200px) {
-    border: 2px solid red;
+    // border: 2px solid red;
   }
 }
