@@ -6,19 +6,26 @@
  */
 
 (function($) {
-  /* JS for hamburger */
+  /**
+   * ATTENTION: These constants are not jQuery elements
+   * They are direct DOM elements
+   */
+  const primaryButton = document.querySelector('.primary-menu-button--mobile');
+  const primaryMenu = document.querySelector('.primary-menu-container');
   const hamburger = document.querySelector('.hamburger');
   const secondaryMenu = document.querySelector('.secondary-menu-container');
+
+  /* JS for hamburger */
   hamburger.addEventListener('click', function() {
     hamburger.classList.toggle('is-active');
     secondaryMenu.classList.toggle('is-opened');
+    primaryMenu.classList.remove('is-opened');
   });
 
   /* JS for destinations */
-  const primaryButton = document.querySelector('.primary-menu-button--mobile');
-  const primaryMenu = document.querySelector('.primary-menu-container');
   primaryButton.addEventListener('click', function() {
     primaryMenu.classList.toggle('is-opened');
+    secondaryMenu.classList.remove('is-opened');
   });
 
   const menuItems = $('.menu-item-has-children');
@@ -31,6 +38,7 @@
     menuItem.addEventListener('mouseleave', function() {
       subItem.removeClass('is-opened');
     });
+    menuItem.click(() => console.log('i have been clicked'));
   }
 })(jQuery);
 

@@ -590,6 +590,7 @@ button {
   display: flex;
   height: 3.5rem;
   background-color: #282c34;
+  position: relative;
 }
 
 .site_header-navigation {
@@ -661,7 +662,7 @@ button {
 
 .primary-menu-container,
 .secondary-menu-container {
-  top: 6.3rem;
+  top: 3.5rem;
   position: absolute;
   background-color: #282c34;
   width: 100vw;
@@ -692,4 +693,19 @@ button {
 .primary-menu .menu-item-has-children .sub-menu.is-opened {
   max-height: 500px;
   transition: max-height 0.25s ease-in;
+}
+
+.menu-item-has-children {
+  position: relative;
+}
+
+.menu-item-has-children:after {
+  content: url("assets/chevron-down.svg");
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.sub-menu {
+  margin-top: 1rem;
 }

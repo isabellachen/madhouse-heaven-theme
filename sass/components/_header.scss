@@ -4,6 +4,7 @@
   display: flex;
   height: $header-height-mobile;
   background-color: $menu-darker;
+  position: relative;
   &-navigation {
     display: flex;
     justify-content: flex-end;
@@ -65,7 +66,7 @@
 .primary-menu,
 .secondary-menu {
   &-container {
-    top: 6.3rem;
+    top: $header-height-mobile;
     position: absolute;
     background-color: $menu-darker;
     width: 100vw;
@@ -97,4 +98,18 @@
       transition: max-height 0.25s ease-in;
     }
   }
+}
+
+.menu-item-has-children {
+  position: relative;
+  &:after {
+    content: url('assets/chevron-down.svg');
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.sub-menu {
+  margin-top: 1rem;
 }
