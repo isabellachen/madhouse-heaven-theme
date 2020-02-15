@@ -10,7 +10,10 @@
    * ATTENTION: These constants are not jQuery elements
    * They are direct DOM elements
    */
-  const primaryButton = document.querySelector('.primary-menu-button--mobile');
+  const primaryButtonMobile = document.querySelector(
+    '.primary-menu-button--mobile'
+  );
+  const primaryButton = document.querySelector('.primary-menu-button');
   const primaryMenu = document.querySelector('.primary-menu-container');
   const hamburger = document.querySelector('.hamburger');
   const secondaryMenu = document.querySelector('.secondary-menu-container');
@@ -24,6 +27,11 @@
 
   /* JS for destinations */
   primaryButton.addEventListener('click', function() {
+    primaryMenu.classList.toggle('is-opened');
+    secondaryMenu.classList.remove('is-opened');
+  });
+
+  primaryButtonMobile.addEventListener('click', function() {
     primaryMenu.classList.toggle('is-opened');
     secondaryMenu.classList.remove('is-opened');
   });

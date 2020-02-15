@@ -50,6 +50,11 @@
 .primary-menu,
 .secondary-menu {
   padding: 1.5rem 2rem;
+
+  @media (min-width: $screen-size-m) {
+    padding: 0.5rem 1rem;
+  }
+
   li {
     margin-bottom: 1rem;
   }
@@ -58,6 +63,13 @@
     text-decoration: none;
     &:hover {
       color: $menu-font-hover-color;
+    }
+  }
+  &-wrapper {
+    @media (min-width: $screen-size-m) {
+      position: relative;
+      height: 100%;
+      display: flex;
     }
   }
 }
@@ -71,6 +83,7 @@
       color: #fff;
       align-items: center;
       font-size: 1.25rem;
+      padding-left: 0.5rem;
 
       &:after {
         content: '|';
@@ -78,7 +91,6 @@
         font-weight: 400;
         font-size: 2rem;
         padding-left: 1rem;
-        padding-right: 1rem;
         position: relative;
         top: -3px;
       }
@@ -93,31 +105,32 @@
       display: none;
     }
   }
-
-  &-wrapper {
-    @media (min-width: $screen-size-m) {
-      height: 100%;
-      display: flex;
-    }
-  }
 }
 
 .primary-menu,
 .secondary-menu {
   &-container {
-    top: $header-height-mobile;
     position: absolute;
     background-color: $menu-darker;
     width: 100vw;
-    right: 0;
     z-index: $z-high;
-    max-height: 0;
-    transition: max-height 0.15s ease-out;
-    overflow: hidden;
+    // overflow: hidden;
+
+    left: -9999px;
+    top: calc(#{$header-height-mobile} + 2rem);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
+
+    @media (min-width: $screen-size-m) {
+      width: fit-content;
+      min-width: 11.15rem;
+      // overflow: unset;
+    }
 
     &.is-opened {
-      max-height: 500px;
-      transition: max-height 0.25s ease-in;
+      opacity: 1;
+      left: 0;
+      top: $header-height-mobile;
     }
   }
 
@@ -128,13 +141,22 @@
 
 .primary-menu .menu-item-has-children {
   .sub-menu {
-    max-height: 0;
-    transition: max-height 0.15s ease-out;
-    overflow: hidden;
-
+    @media (min-width: $screen-size-m) {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+    }
     &.is-opened {
-      max-height: 500px;
-      transition: max-height 0.25s ease-in;
+      @media (min-width: $screen-size-m) {
+        left: 0;
+        opacity: 1;
+        left: 10.2rem;
+        background-color: $menu-darker;
+        min-width: 11.15rem;
+        top: 0;
+        padding: 1rem 0.5rem;
+      }
     }
   }
 }
@@ -150,5 +172,5 @@
 }
 
 .sub-menu {
-  margin-top: 1rem;
+  padding-top: 1rem;
 }
