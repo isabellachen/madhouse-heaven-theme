@@ -27,45 +27,47 @@
     <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e('Skip to content', 'madhouse-heaven'); ?></a>
 
     <header id="masthead" class="site_header">
-      <div class="site-branding">
-        <?php
-        the_custom_logo();
-        ?>
-      </div><!-- .site-branding -->
-
-      <nav id="site-navigation" class="site_header-navigation">
-        <div class="primary-menu-wrapper">
-          <button class="primary-menu-button">DESTINATIONS</button>
-          <button class="primary-menu-button--mobile"><img src="<?php echo get_template_directory_uri(); ?>/assets/earth.svg"></button>
+      <div class="site_header-inner container">
+        <div class="site-branding">
           <?php
-          wp_nav_menu(array(
-            'theme_location' => 'primary',
-            'menu_id'        => 'primary-menu',
-            'container_class' => 'primary-menu-container',
-            'menu_class' => 'primary-menu',
-          ));
+          the_custom_logo();
           ?>
-        </div>
-        <div class="secondary-menu-wrapper">
-          <div class="secondary-menu-title">
-            <button class="hamburger hamburger--squeeze" type="button">
-              <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-              </span>
-            </button>
+        </div><!-- .site-branding -->
+
+        <nav id="site-navigation" class="site_header-navigation">
+          <div class="primary-menu-wrapper">
+            <button class="primary-menu-button">DESTINATIONS</button>
+            <button class="primary-menu-button--mobile"><img src="<?php echo get_template_directory_uri(); ?>/assets/earth.svg"></button>
+            <?php
+            wp_nav_menu(array(
+              'theme_location' => 'primary',
+              'menu_id'        => 'primary-menu',
+              'container_class' => 'primary-menu-container',
+              'menu_class' => 'primary-menu',
+            ));
+            ?>
+          </div>
+          <div class="secondary-menu-wrapper">
+            <div class="secondary-menu-title">
+              <button class="hamburger hamburger--squeeze" type="button">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+              </button>
+            </div>
+            <?php
+            wp_nav_menu(array(
+              'theme_location' => 'secondary',
+              'menu_id'        => 'secondary-menu',
+              'container_class' => 'secondary-menu-container',
+              'menu_class' => 'secondary-menu'
+            ));
+            ?>
           </div>
           <?php
-          wp_nav_menu(array(
-            'theme_location' => 'secondary',
-            'menu_id'        => 'secondary-menu',
-            'container_class' => 'secondary-menu-container',
-            'menu_class' => 'secondary-menu'
-          ));
           ?>
-        </div>
-        <?php
-        ?>
-      </nav><!-- #site-navigation -->
+        </nav><!-- #site-navigation -->
+      </div>
     </header><!-- #masthead -->
 
     <div id="content" class="site-content">

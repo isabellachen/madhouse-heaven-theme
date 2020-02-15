@@ -2,14 +2,21 @@
 
 .site_header {
   display: flex;
+  justify-content: center;
   height: $header-height-mobile;
   background-color: $menu-darker;
   position: relative;
+
   &-navigation {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
+  }
+
+  &-inner {
+    display: flex;
+    height: 100%;
   }
 }
 
@@ -23,10 +30,20 @@
 .custom-logo-link {
   display: flex;
   align-items: center;
+  height: 100%;
+
+  @media (min-width: $screen-size-m) {
+    max-width: 50%;
+  }
 
   img {
     height: auto;
     max-width: 80%;
+
+    @media (min-width: $screen-size-m) {
+      height: 100%;
+      object-fit: contain;
+    }
   }
 }
 
@@ -48,17 +65,39 @@
 .primary-menu {
   &-button {
     display: none;
-    @media (min-width: $screen-size-m) {
-      display: block;
-    }
 
-    &--mobile {
-      display: block;
-      height: 1.8rem;
-      position: relative;
-      @media (min-width: $screen-size-m) {
-        display: none;
+    @media (min-width: $screen-size-m) {
+      display: flex;
+      color: #fff;
+      align-items: center;
+      font-size: 1.25rem;
+
+      &:after {
+        content: '|';
+        color: #fff;
+        font-weight: 400;
+        font-size: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        position: relative;
+        top: -3px;
       }
+    }
+  }
+
+  &-button--mobile {
+    display: block;
+    height: 1.8rem;
+    position: relative;
+    @media (min-width: $screen-size-m) {
+      display: none;
+    }
+  }
+
+  &-wrapper {
+    @media (min-width: $screen-size-m) {
+      height: 100%;
+      display: flex;
     }
   }
 }

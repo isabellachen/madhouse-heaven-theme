@@ -567,6 +567,28 @@ button {
   background-color: transparent;
 }
 
+/*
+ * FONTS 
+*/
+/*
+ * COLORS 
+*/
+/*
+ * SCREEN SIZES
+*/
+/*
+ * FONT SIZES
+*/
+/*
+ * HEIGHTS
+*/
+/*
+ * Z-INDEX
+*/
+.container {
+  max-width: 1140px;
+}
+
 /* Component Styles */
 /*
  * FONTS 
@@ -588,6 +610,7 @@ button {
 */
 .site_header {
   display: flex;
+  justify-content: center;
   height: 3.5rem;
   background-color: #282c34;
   position: relative;
@@ -600,6 +623,11 @@ button {
   width: 100%;
 }
 
+.site_header-inner {
+  display: flex;
+  height: 100%;
+}
+
 .site-branding {
   height: 100%;
   display: flex;
@@ -610,11 +638,25 @@ button {
 .custom-logo-link {
   display: flex;
   align-items: center;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .custom-logo-link {
+    max-width: 50%;
+  }
 }
 
 .custom-logo-link img {
   height: auto;
   max-width: 80%;
+}
+
+@media (min-width: 768px) {
+  .custom-logo-link img {
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
 .primary-menu,
@@ -644,7 +686,20 @@ button {
 
 @media (min-width: 768px) {
   .primary-menu-button {
-    display: block;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    font-size: 1.25rem;
+  }
+  .primary-menu-button:after {
+    content: '|';
+    color: #fff;
+    font-weight: 400;
+    font-size: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    top: -3px;
   }
 }
 
@@ -657,6 +712,13 @@ button {
 @media (min-width: 768px) {
   .primary-menu-button--mobile {
     display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .primary-menu-wrapper {
+    height: 100%;
+    display: flex;
   }
 }
 
