@@ -1,5 +1,26 @@
 @import '../base/variables';
 
+$menu-overflow-screen-l: 110px;
+$menu-overflow-screen-s: 220px;
+
 .container {
-  max-width: 1140px;
+  // @media (min-width: $screen-size-m) {
+  //   max-width: calc(#{$screen-size-m} - #{$menu-overflow-screen-s});
+  // }
+
+  // @media (min-width: $screen-size-l) {
+  //   max-width: calc(#{$screen-size-l} - #{$menu-overflow-screen-s});
+  // }
+
+  // @media (min-width: $screen-size-ipad-pro) {
+  //   max-width: calc(#{$screen-size-ipad-pro} - #{$menu-overflow-screen-s});
+  // }
+
+  @media (min-width: $screen-size-xl) {
+    max-width: calc(#{$screen-size-xl} - #{$menu-overflow-screen-l});
+  }
+
+  @media (min-width: $screen-size-xxl) {
+    max-width: calc(#{$screen-size-xxl} - #{$menu-overflow-screen-l});
+  }
 }

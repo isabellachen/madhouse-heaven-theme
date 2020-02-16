@@ -8,10 +8,11 @@
   position: relative;
 
   &-navigation {
+    flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
+    // width: 100%;
   }
 
   &-inner {
@@ -25,22 +26,23 @@
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
+  flex: 3;
+
+  @media (min-width: $screen-size-m) {
+    flex: 0.8;
+  }
+
+  @media (min-width: $screen-size-ipad-pro) {
+    flex: 0.5;
+  }
 }
 
 .custom-logo-link {
-  display: flex;
-  align-items: center;
-  height: 100%;
-
-  @media (min-width: $screen-size-m) {
-    max-width: 50%;
-  }
-
   img {
     height: auto;
     max-width: 80%;
 
-    @media (min-width: $screen-size-m) {
+    @media (min-width: $screen-size-xl) {
       height: 100%;
       object-fit: contain;
     }
@@ -51,12 +53,16 @@
 .secondary-menu {
   padding: 1.5rem 2rem;
 
-  @media (min-width: $screen-size-m) {
-    padding: 0.5rem 1rem;
+  @media (min-width: $screen-size-xl) {
+    padding: 0;
   }
 
   li {
     margin-bottom: 1rem;
+    @media (min-width: $screen-size-xl) {
+      margin: 0;
+      padding: 0.5rem;
+    }
   }
   a {
     color: $menu-font-color;
@@ -66,7 +72,7 @@
     }
   }
   &-wrapper {
-    @media (min-width: $screen-size-m) {
+    @media (min-width: $screen-size-xl) {
       position: relative;
       height: 100%;
       display: flex;
@@ -78,7 +84,7 @@
   &-button {
     display: none;
 
-    @media (min-width: $screen-size-m) {
+    @media (min-width: $screen-size-xl) {
       display: flex;
       color: #fff;
       align-items: center;
@@ -101,7 +107,7 @@
     display: block;
     height: 1.8rem;
     position: relative;
-    @media (min-width: $screen-size-m) {
+    @media (min-width: $screen-size-xl) {
       display: none;
     }
   }
@@ -111,10 +117,9 @@
 .secondary-menu {
   &-container {
     position: absolute;
-    background-color: $menu-darker;
+    background-color: $menu-dark;
     width: 100vw;
     z-index: $z-high;
-    // overflow: hidden;
 
     left: -9999px;
     top: calc(#{$header-height-mobile} + 2rem);
@@ -122,9 +127,12 @@
     transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
 
     @media (min-width: $screen-size-m) {
+      background-color: $sub-menu-background;
+    }
+
+    @media (min-width: $screen-size-xl) {
       width: fit-content;
       min-width: 11.15rem;
-      // overflow: unset;
     }
 
     &.is-opened {
@@ -141,21 +149,35 @@
 
 .primary-menu .menu-item-has-children {
   .sub-menu {
-    @media (min-width: $screen-size-m) {
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+
+    @media (min-width: $screen-size-xl) {
       position: absolute;
       left: -9999px;
       opacity: 0;
       transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
     }
+
     &.is-opened {
+      opacity: 1;
+      max-height: 600px;
+      padding-top: 1rem;
+      padding-left: 0.6rem;
+
       @media (min-width: $screen-size-m) {
+        background-color: $sub-menu-background;
+      }
+
+      @media (min-width: $screen-size-xl) {
         left: 0;
-        opacity: 1;
-        left: 10.2rem;
-        background-color: $menu-darker;
-        min-width: 11.15rem;
         top: 0;
-        padding: 1rem 0.5rem;
+        opacity: 1;
+        left: 11.05rem;
+
+        min-width: 11.15rem;
+        padding: 0;
       }
     }
   }
@@ -168,9 +190,10 @@
     position: absolute;
     top: 0;
     right: 0;
-  }
-}
 
-.sub-menu {
-  padding-top: 1rem;
+    @media (min-width: $screen-size-xl) {
+      top: 20%;
+      transform: rotate(-90deg);
+    }
+  }
 }
