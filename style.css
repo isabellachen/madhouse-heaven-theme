@@ -648,6 +648,12 @@ button:focus {
   flex: 3;
 }
 
+@media (min-width: 576px) {
+  .site-branding {
+    flex: 1;
+  }
+}
+
 @media (min-width: 768px) {
   .site-branding {
     flex: 0.8;
@@ -708,12 +714,27 @@ button:focus {
   color: #fff;
 }
 
+.primary-menu-wrapper,
+.secondary-menu-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 @media (min-width: 1200px) {
   .primary-menu-wrapper,
   .secondary-menu-wrapper {
     position: relative;
-    height: 100%;
-    display: flex;
+  }
+}
+
+.primary-menu-wrapper {
+  padding: 0 1rem;
+}
+
+@media (min-width: 1200px) {
+  .primary-menu-wrapper {
+    padding: 0;
   }
 }
 
@@ -764,7 +785,7 @@ button:focus {
   transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .primary-menu-container,
   .secondary-menu-container {
     background-color: rgba(61, 64, 78, 0.85);
@@ -813,7 +834,7 @@ button:focus {
   padding-left: 0.6rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .primary-menu .menu-item-has-children .sub-menu.is-opened {
     background-color: rgba(61, 64, 78, 0.85);
   }

@@ -6,47 +6,69 @@
  */
 
 (function($) {
+  const screenWidth = window.screen.width;
+  const mobileBreakpoint = 1024;
+
   /**
    * ATTENTION: These constants are not jQuery elements
    * They are direct DOM elements
    */
-  const primaryButtonMobile = document.querySelector(
-    '.primary-menu-button--mobile'
+  const primaryMenuWrapper = document.querySelector('.primary-menu-wrapper');
+  const secondaryMenuWrapper = document.querySelector(
+    '.secondary-menu-wrapper'
   );
-  const primaryButton = document.querySelector('.primary-menu-button');
   const primaryMenu = document.querySelector('.primary-menu-container');
   const hamburger = document.querySelector('.hamburger');
   const secondaryMenu = document.querySelector('.secondary-menu-container');
 
   /* JS for hamburger */
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('is-active');
-    secondaryMenu.classList.toggle('is-opened');
+  secondaryMenuWrapper.addEventListener('mouseenter', function() {
+    hamburger.classList.add('is-active');
+    secondaryMenu.classList.add('is-opened');
     primaryMenu.classList.remove('is-opened');
   });
 
-  /* JS for destinations */
-  primaryButton.addEventListener('click', function() {
-    primaryMenu.classList.toggle('is-opened');
+  secondaryMenuWrapper.addEventListener('mouseleave', function() {
     secondaryMenu.classList.remove('is-opened');
+    hamburger.classList.remove('is-active');
   });
 
-  primaryButtonMobile.addEventListener('click', function() {
+  primaryMenuWrapper.addEventListener('mouseenter', function() {
     primaryMenu.classList.toggle('is-opened');
     secondaryMenu.classList.remove('is-opened');
+    hamburger.classList.remove('is-active');
   });
 
+  primaryMenuWrapper.addEventListener('mouseleave', function() {
+    primaryMenu.classList.remove('is-opened');
+  });
+
+  console.log('screenwidth: ', screenWidth);
+
+  /**
+   * ATTENTION: jQuery is used here.
+   * DOM element methods like classList.add are replaced by jQuery methods like addClass.
+   */
   const menuItems = $('.menu-item-has-children');
-  for (let i = 0; i < menuItems.length; i++) {
-    const menuItem = menuItems[i];
-    const subItem = $(menuItem).find('.sub-menu');
-    menuItem.addEventListener('mouseenter', function() {
-      subItem.addClass('is-opened');
-    });
-    menuItem.addEventListener('mouseleave', function() {
-      subItem.removeClass('is-opened');
-    });
-    menuItem.click(() => console.log('i have been clicked'));
+  if (screenWidth > mobileBreakpoint) {
+    for (let i = 0; i < menuItems.length; i++) {
+      const menuItem = menuItems[i];
+      const subItem = $(menuItem).find('.sub-menu');
+      menuItem.addEventListener('mouseenter', function() {
+        subItem.addClass('is-opened');
+      });
+      menuItem.addEventListener('mouseleave', function() {
+        subItem.removeClass('is-opened');
+      });
+    }
+  } else {
+    for (let i = 0; i < menuItems.length; i++) {
+      const menuItem = menuItems[i];
+      const subItem = $(menuItem).find('.sub-menu');
+      menuItem.addEventListener('click', function() {
+        subItem.toggleClass('is-opened');
+      });
+    }
   }
 })(jQuery);
 
