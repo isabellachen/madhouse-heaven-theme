@@ -699,7 +699,6 @@ button:focus {
   .primary-menu li,
   .secondary-menu li {
     margin: 0;
-    padding: 0.5rem;
   }
 }
 
@@ -707,11 +706,20 @@ button:focus {
 .secondary-menu a {
   color: #b0b0b0;
   text-decoration: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1200px) {
+  .primary-menu a,
+  .secondary-menu a {
+    display: flex;
+    padding: 0.5rem;
+  }
 }
 
 .primary-menu a:hover,
 .secondary-menu a:hover {
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .primary-menu-wrapper,
@@ -864,7 +872,8 @@ button:focus {
 
 @media (min-width: 1200px) {
   .menu-item-has-children:after {
-    top: 20%;
+    top: 0.25rem;
     transform: rotate(-90deg);
+    opacity: 0.6;
   }
 }
