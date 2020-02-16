@@ -13,6 +13,9 @@
    * ATTENTION: These constants are not jQuery elements
    * They are direct DOM elements
    */
+  const primaryButtonMobile = document.querySelector(
+    '.primary-menu-button--mobile'
+  );
   const primaryMenuWrapper = document.querySelector('.primary-menu-wrapper');
   const secondaryMenuWrapper = document.querySelector(
     '.secondary-menu-wrapper'
@@ -22,28 +25,39 @@
   const secondaryMenu = document.querySelector('.secondary-menu-container');
 
   /* JS for hamburger */
-  secondaryMenuWrapper.addEventListener('mouseenter', function() {
-    hamburger.classList.add('is-active');
-    secondaryMenu.classList.add('is-opened');
-    primaryMenu.classList.remove('is-opened');
-  });
+  if (screenWidth > mobileBreakpoint) {
+    secondaryMenuWrapper.addEventListener('mouseenter', function() {
+      hamburger.classList.add('is-active');
+      secondaryMenu.classList.add('is-opened');
+      primaryMenu.classList.remove('is-opened');
+    });
 
-  secondaryMenuWrapper.addEventListener('mouseleave', function() {
-    secondaryMenu.classList.remove('is-opened');
-    hamburger.classList.remove('is-active');
-  });
+    secondaryMenuWrapper.addEventListener('mouseleave', function() {
+      secondaryMenu.classList.remove('is-opened');
+      hamburger.classList.remove('is-active');
+    });
 
-  primaryMenuWrapper.addEventListener('mouseenter', function() {
-    primaryMenu.classList.toggle('is-opened');
-    secondaryMenu.classList.remove('is-opened');
-    hamburger.classList.remove('is-active');
-  });
+    primaryMenuWrapper.addEventListener('mouseenter', function() {
+      primaryMenu.classList.toggle('is-opened');
+      secondaryMenu.classList.remove('is-opened');
+      hamburger.classList.remove('is-active');
+    });
 
-  primaryMenuWrapper.addEventListener('mouseleave', function() {
-    primaryMenu.classList.remove('is-opened');
-  });
+    primaryMenuWrapper.addEventListener('mouseleave', function() {
+      primaryMenu.classList.remove('is-opened');
+    });
+  } else {
+    primaryButtonMobile.addEventListener('click', function() {
+      primaryMenu.classList.toggle('is-opened');
+      secondaryMenu.classList.remove('is-opened');
+    });
 
-  console.log('screenwidth: ', screenWidth);
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('is-active');
+      secondaryMenu.classList.toggle('is-opened');
+      primaryMenu.classList.remove('is-opened');
+    });
+  }
 
   /**
    * ATTENTION: jQuery is used here.
